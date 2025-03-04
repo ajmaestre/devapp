@@ -5,6 +5,6 @@ FROM nginx:latest
 COPY . /usr/share/nginx/html
 
 # Expone el puerto 80 para servir el sitio
-EXPOSE 80
+EXPOSE 3000
 
 # No es necesario un CMD porque Nginx ya se ejecuta por defecto

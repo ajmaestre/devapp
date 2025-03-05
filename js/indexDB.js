@@ -228,7 +228,7 @@ const getData = async () => {
         const result = await fetch(`${window.env.API_URL}/routes/datoRoute.php`);
         const res = await result.json()
         return res;
-    } catch (error) {
+    } catch (err) {
         console.log(err)
     }
 }
@@ -244,7 +244,7 @@ const postData = async (data) => {
 		});
         const res = await result.json()
         return res;
-    } catch (error) {
+    } catch (err) {
         console.log(err)
     }
 }
@@ -260,7 +260,7 @@ const putData = async (data) => {
 		});
         const res = await result.json()
         return res;
-    } catch (error) {
+    } catch (err) {
         console.log(err)
     }
 }
@@ -275,7 +275,7 @@ const deleteData = async (codigo) => {
 		});
         const res = await result.json()
         return res;
-    } catch (error) {
+    } catch (err) {
         console.log(err)
     }
 }

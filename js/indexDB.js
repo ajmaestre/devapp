@@ -226,7 +226,7 @@ divSvg.addEventListener("dragleave", () => {
 
 const getData = async () => {
     try {
-        const result = await fetch(`${window.ENV.API_URL}/routes/datoRoute.php`);
+        const result = await fetch(`${window.ENV.API_URL}`);
         const res = await result.json()
         return res;
     } catch (err) {
@@ -236,7 +236,7 @@ const getData = async () => {
 
 const postData = async (data) => {
     try {
-        const result = await fetch(`${window.ENV.API_URL}/routes/datoRoute.php`, {
+        const result = await fetch(`${window.ENV.API_URL}`, {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {
@@ -252,7 +252,7 @@ const postData = async (data) => {
 
 const putData = async (data) => {
     try {
-        const result = await fetch(`${window.ENV.API_URL}/routes/datoRoute.php`, {
+        const result = await fetch(`${window.ENV.API_URL}`, {
 			method: 'PUT',
 			body: JSON.stringify(data),
 			headers: {
@@ -268,7 +268,7 @@ const putData = async (data) => {
 
 const deleteData = async (codigo) => {
     try {
-        const result = await fetch(`${window.ENV.API_URL}/routes/datoRoute.php?codigo=${codigo}`, {
+        const result = await fetch(`${window.ENV.API_URL}?codigo=${codigo}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json'

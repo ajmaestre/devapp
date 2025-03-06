@@ -27,12 +27,12 @@ body{
 	align-items: center;
 	justify-content: center;
 	width: 45%;
-	border: 0.2rem solid #723636;
-    border-radius: 1rem; /* Agrega bordes redondeados */
-    padding: 1rem; /* Agrega un poco de padding para que se vea mejor */
+    border-radius: 1.5rem; 
+	background-color: #55416162;
 	height: calc(100vh - 5rem);
-	box-sizing: border-box; /* Evita que padding afecte el tamaño total */
-    overflow: hidden; /* Evita que el contenido lo haga crecer más de la cuenta */
+	box-sizing: border-box; 
+    overflow: hidden; 
+
 }
 
 .container-form-res{
@@ -48,11 +48,12 @@ body{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 90%;
+	width: 100%;
 	height: auto;
 	padding: 1rem;
 	border: .1rem solid #f0f0f0;
 	box-shadow: .3rem .3rem .3rem #f0f0f0;
+	
 }
 
 .container-form form h4{
@@ -61,8 +62,10 @@ body{
 	font-weight: bold;
 	font-style: italic;
 	padding: 0 1rem;
+	padding-left: 3rem;
 	text-align: left;
 	color: rgb(0, 0, 0);
+	margin: 2rem;
 }
 
 .container-form form .form-body{
@@ -71,6 +74,7 @@ body{
 	align-items: flex-start;
 	justify-content: center;
 	flex-direction: row;
+	
 }
 
 form .form-body .group-input{

@@ -21,13 +21,13 @@ body{
 
 
 .container-form{
-	position: fixed;
+	
 	left: 0;
 	top: 5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 55%;
+	width: 45%;
 	border: .2rem solid #723636;
 	
 }

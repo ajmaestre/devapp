@@ -1,16 +1,10 @@
 
 "use strict";
 
-import { Notify } from './notification.js';
-
-const notify = new Notify();
-notify.getNotify();
-
 const BASE_URL = "/api/routes/datoRoute.php";
 
 
 const container = document.querySelector(".container");
-const divSvg = document.querySelector("#div-svg");
 const warning = document.querySelector(".warning");
 const btn = document.querySelector("#btn");
 const btnReset = document.querySelector("#btnReset");
@@ -30,6 +24,7 @@ const numInit = 6;
 let count = 0;
 
 const addObject = async (object) => {
+	console.log(object)
 	if(!object.codigo) {
 		// REGISTRAR
 		const result = await postData(object);
@@ -55,9 +50,13 @@ const getObjects = async () => {
 	// OBTENER DATOS
 	const users = await getData();
 	if(users.length == 0){
-		const title = document.createElement('h1');
-		title.innerHTML = "No hay datos";
-		fragment.appendChild(title);
+		const div = document.createElement('div');
+		div.className = 'container-tilte';
+		const title = document.createElement('h2');
+		title.className = 'title';
+		title.innerHTML = "No se encontraron registros";
+		div.appendChild(title);
+		fragment.appendChild(div);
 	}else{
 		for(let i = 0; i < users.length; i++){
 			if(users[count] != undefined){
@@ -76,36 +75,19 @@ const insertData = (data) => {
 	const card = document.createElement('div');
 	card.className = 'card';
 	card.id = `card${data['id']}`;
-	card.addEventListener("dragstart", (e) => {
-		divSvg.className = 'div-svg-show';
-		e.dataTransfer.setData("user", data['codigo']);
-	});
-
-	card.addEventListener("drag", (e) => {
-		divSvg.className = 'div-svg-show';
-		card.style.transform = `translate(${e.layerX}px, ${e.layerY}px)`;
-	});
-
-	card.addEventListener("dragend", (e) => {
-		divSvg.className = 'div-svg';
-		card.style.transform = `translate(${0}px, ${0}px)`;
-	});
 
 	const ul = document.createElement('ul');
 	const liName = document.createElement('li');
-	liName.innerHTML = 'Nombre: ' + data['nombre1'] + ' ' + data['nombre2'] + ' ' + data['apellido1'] + ' ' + data['apellido2'];
+	liName.className = 'li-name';
+	liName.innerHTML = data['nombre1'] + ' ' + data['nombre2'] + ' ' + data['apellido1'] + ' ' + data['apellido2'];
 	ul.appendChild(liName);
 
 	const liTypeId = document.createElement('li');
-	liTypeId.innerHTML = 'Tipo de id: ' + data['tipo_id'];
+	liTypeId.innerHTML = data['tipo_id'] + ": " + data['id'];
 	ul.appendChild(liTypeId);
 
-	const liId = document.createElement('li');
-	liId.innerHTML = 'Id: ' + data['id'];
-	ul.appendChild(liId);
-
 	const liSexo = document.createElement('li');
-	liSexo.innerHTML = 'Sexo: ' + data['sexo'];
+	liSexo.innerHTML = 'Genero: ' + data['sexo'];
 	ul.appendChild(liSexo);
 
 	const liDate = document.createElement('li');
@@ -119,7 +101,7 @@ const insertData = (data) => {
 		e.preventDefault();
 		deleteObject(data['codigo']);
 		cleanContainer();
-		getObjects(numInit);
+		getObjects();
 	});
 	const btnUpdate = document.createElement('button');
 	btnUpdate.innerHTML = 'Modificar';
@@ -169,12 +151,12 @@ const getUser = () => {
 const cleanInputs = () => {
 	key.value = '';
 	id.value = '';
-	idType.value = '';
+	idType.value = 'Tipo de identificación';
 	name1.value = '';
 	name2.value = '';
 	lastname1.value = '';
 	lastname2.value = '';
-	sexo.value = '';
+	sexo.value = 'Genero';
 	date.value = '';
 }
 
@@ -185,41 +167,27 @@ const showWarning = () => {
 	}, 3000);
 }
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", (e) => {
+	e.preventDefault();
 	const user = getUser();
 	if(user.id.length > 0 && user.tipo_id.length > 0 && user.nombre1.length > 0 && user.apellido1.length > 0 && user.fecha_nacimiento.length > 0){
 		addObject(user);
 		cleanContainer();
 		getObjects();
 		cleanInputs();
-		notify.newNotification();
 	}else{
 		showWarning();
 	}
 });
 
+document.querySelector('form').addEventListener('change', (event) => {
+    if (event.target.name === "genero") {
+        console.log("Seleccionaste:", event.target.value);
+    }
+});
+
 btnReset.addEventListener("click", () => {
 	cleanInputs();
-});
-
-divSvg.addEventListener("dragenter", () => {
-	
-});
-
-divSvg.addEventListener("dragover", (e) => {
-	e.preventDefault();
-});
-
-divSvg.addEventListener("drop", (e) => {
-	const user = e.dataTransfer.getData("user");
-	divSvg.className = 'div-svg-show';
-	deleteObject(Number.parseInt(user));
-	cleanContainer();
-	getObjects();
-});
-
-divSvg.addEventListener("dragleave", () => {
-
 });
 
 
@@ -227,7 +195,7 @@ divSvg.addEventListener("dragleave", () => {
 
 const getData = async () => {
     try {
-        const result = await fetch(`${BASE_URL}`, {
+        const result = await fetch(`http://ec2-3-137-169-185.us-east-2.compute.amazonaws.com/routes/datoRoute.php`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -242,7 +210,8 @@ const getData = async () => {
 
 const postData = async (data) => {
     try {
-        const result = await fetch(`${BASE_URL}`, {
+		console.log(data)
+        const result = await fetch(`http://ec2-3-137-169-185.us-east-2.compute.amazonaws.com/routes/datoRoute.php`, {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {

@@ -4,19 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Descripción de la página">
-    <title>IndexDB</title>
+    <title>Gestión de Registros</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div class="container-form">
+    <div class="div-container">
+        <div class="div-form">
+            <form>
+                <div class="div-header-form">
+                    <h4>Por favor diligencia toda la información</h4>
+                </div>
+                <div class="div-first-data">
+                    <input class="input" type="text" name="key" id="key">
+                    <div class="group-input">
+                        <select class="input" name="typeid" id="typeid">
+                            <option disabled selected>Tipo de identificación</option>
+                            <option>CC</option>
+                            <option>CE</option>
+                            <option>TI</option>
+                            <option>CURP</option>
+                            <option>PPT</option>
+                            <option>C.I.P</option>
+                        </select>
+                        <input class="input" type="number" name="id" id="id" required
+                            placeholder="Identificación">
+                    </div>
+                    <input class="input" type="text" name="lastname1" id="lastname1" required placeholder="Primer apellido">
+                    <input class="input" type="text" name="lastname2" id="lastname2" required placeholder="Segundo apellido">
+                    <input class="input" type="text" name="name1" id="name1" required placeholder="Primer nombre">
+                    <input class="input" type="text" name="name2" id="name2" required placeholder="Segundo nombre">
+                    <div class="div-genero">
+                        <select class="input" name="sexo" id="sexo">
+                            <option disabled selected>Genero</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="date">
+                        <label for="date">Fecha de nacimiento: </label>
+                        <input class="input" type="date" name="date" id="date" required placeholder="Fecha de nacimiento">
+                    </div>
+                    <hr class="hr">
+                </div>
+                <div class="group-button">
+                    <div class="div-btn div-btn-prev">
+                        <input type="button" id="btnReset" class="btn-prev" value="Restablecer">
+                        <input class="btn-next" type="submit" value="Registrar" id="btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="div-image">
+            <div class="container">
+                <hr class="hr">
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container-form">
         <form>
             <h4>Registrar datos</h4>
             <div class="form-body">
                 <div class="group-input">
                     <input class="input" type="text" name="key" id="key">
-                    <input class="input" placeholder="Tipo de identificación" type="text" name="typeid" id="typeid">
-                    <input class="input" placeholder="Identificación" type="text" name="id" id="id">
+                    <div class="row">
+                        <input class="input" placeholder="Tipo de identificación" type="text" name="typeid" id="typeid">
+                        <input class="input" placeholder="Identificación" type="text" name="id" id="id">
+                    </div>
                     <input class="input" placeholder="Primer apellido" type="text" name="lastname1" id="lastname1">
                     <input class="input" placeholder="Segundo apellido" type="text" name="lastname2" id="lastname2">
                     <input class="input" placeholder="Primer nombre" type="text" name="name1" id="name1">
@@ -33,9 +88,9 @@
                 <input class="btn" id="btn" type="button" name="" value="Registrar">
             </div>
         </form>
-    </div>
+    </div> -->
 
-    <div class="div-trash">
+    <!-- <div class="div-trash">
         <div class="div-svg" id="div-svg">
         	<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" 
             		xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -57,7 +112,7 @@
     </div>	
 
     <div class="container">
-    </div>
+    </div> -->
 
     <script type="module"  src="js/indexDB.js"></script>
 </body>

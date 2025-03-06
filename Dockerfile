@@ -10,6 +10,6 @@ COPY . /usr/share/nginx/html
 RUN echo "window.ENV = { API_URL: '\"${API_URL}\"' };" > /usr/share/nginx/html/env.js
 
 # Expone el puerto 80 para servir el sitio
-EXPOSE 80
+EXPOSE 3000
 
 # No es necesario un CMD porque Nginx ya se ejecuta por defecto

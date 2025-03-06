@@ -1,4 +1,4 @@
 window.ENV = {
-    API_URL: "http://localhost:80/routes/datoRoute.php"
+    API_URL: "http://dev-api:80/api"
   };
   

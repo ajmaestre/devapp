@@ -2,15 +2,23 @@
 body{
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
+	height: 100vh;
 	flex-direction: row;
 	font-family: sans-serif;
 	padding-top: 5rem;
 }
 
+
+
 .responsive-body{
 	flex-direction: column;
 }
+
+.btnCard:hover {
+    background-color: #e64a19;
+}
+
 
 .container-form{
 	position: fixed;
@@ -19,7 +27,9 @@ body{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 60%;
+	width: 55%;
+	border: .2rem solid #723636;
+	
 }
 
 .container-form-res{
@@ -44,8 +54,11 @@ body{
 
 .container-form form h4{
 	width: inherit;
+	font-weight: bold;
+	font-style: italic;
 	padding: 0 1rem;
 	text-align: left;
+	color: rgb(0, 0, 0);
 }
 
 .container-form form .form-body{
@@ -101,12 +114,13 @@ form .form-body .div-image .btn:hover{
 }
 
 form .input{
+	
 	width: 90%;
-	height: 2rem;
+	height: 2.5rem;
 	border: .1rem solid #333;
-	border-radius: .2rem;
+	border-radius: .4rem;
 	margin: .2rem 0;
-	padding: 0 .5rem;
+	padding-top: 0.7rem;
 }
 
 form #key{
@@ -134,15 +148,17 @@ form .btn-group{
 	width: inherit;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
 	flex-direction: row;
 	margin: 1rem 0;
+	padding: 2.1rem;
+	gap: 2rem;
 }
 
 .btn{
-	width: 10rem;
-	height: 2rem;
-	margin: 0 .2rem;
+	width: 11rem;
+	height: 3rem;
+	margin: 0 .6rem;
 	color: white;
 	background-color: #39a;
 	font-size: .9rem;

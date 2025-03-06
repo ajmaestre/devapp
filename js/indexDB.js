@@ -195,7 +195,7 @@ btnReset.addEventListener("click", () => {
 
 const getData = async () => {
     try {
-        const result = await fetch(`http://ec2-3-137-169-185.us-east-2.compute.amazonaws.com/routes/datoRoute.php`, {
+        const result = await fetch(`${BASE_URL}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -211,7 +211,7 @@ const getData = async () => {
 const postData = async (data) => {
     try {
 		console.log(data)
-        const result = await fetch(`http://ec2-3-137-169-185.us-east-2.compute.amazonaws.com/routes/datoRoute.php`, {
+        const result = await fetch(`${BASE_URL}`, {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {

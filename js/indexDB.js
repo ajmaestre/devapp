@@ -6,7 +6,7 @@ import { Notify } from './notification.js';
 const notify = new Notify();
 notify.getNotify();
 
-const BASE_URL = "http://dev-api:80/routes/datoRoute.php";
+const BASE_URL = "/api/routes/datoRoute.php";
 
 
 const container = document.querySelector(".container");
@@ -227,7 +227,12 @@ divSvg.addEventListener("dragleave", () => {
 
 const getData = async () => {
     try {
-        const result = await fetch(`${BASE_URL}`);
+        const result = await fetch(`${BASE_URL}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
         const res = await result.json()
         return res;
     } catch (err) {

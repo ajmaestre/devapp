@@ -266,6 +266,15 @@ form #key{
 	display: none;
 }
 
+.warning{
+    display: none;
+}
+
+.show span{
+    font-size: .8rem;
+    color: red;
+}
+
 /* ############################################### CARDS ############################################## */
 
 .container{

@@ -24,7 +24,6 @@ const numInit = 6;
 let count = 0;
 
 const addObject = async (object) => {
-	console.log(object)
 	if(!object.codigo) {
 		// REGISTRAR
 		const result = await postData(object);
@@ -38,6 +37,7 @@ const addObject = async (object) => {
 const deleteObject = async (key) => {
 	// DELETE
 	const result = await deleteData(key);
+	getObjects();
 }
 
 const cleanContainer = () =>{
@@ -101,7 +101,6 @@ const insertData = (data) => {
 		e.preventDefault();
 		deleteObject(data['codigo']);
 		cleanContainer();
-		getObjects();
 	});
 	const btnUpdate = document.createElement('button');
 	btnUpdate.innerHTML = 'Modificar';
@@ -160,6 +159,20 @@ const cleanInputs = () => {
 	date.value = '';
 }
 
+const validateData = (user) => {
+	if(
+		user.id.length > 0 && 
+		user.tipo_id != 'Tipo de identificación' 
+		&& user.nombre1.length > 0 
+		&& user.apellido1.length > 0 
+		&& user.sexo != 'Genero'
+		&& user.fecha_nacimiento.length > 0
+	){
+		return true;
+	}
+	return false;
+}
+
 const showWarning = () => {
 	warning.className = "show";
 	setInterval(() => {
@@ -167,11 +180,11 @@ const showWarning = () => {
 	}, 3000);
 }
 
-btn.addEventListener("click", (e) => {
+btn.addEventListener("click", async (e) => {
 	e.preventDefault();
 	const user = getUser();
-	if(user.id.length > 0 && user.tipo_id.length > 0 && user.nombre1.length > 0 && user.apellido1.length > 0 && user.fecha_nacimiento.length > 0){
-		addObject(user);
+	if(validateData(user)){
+		const result = await addObject(user);
 		cleanContainer();
 		getObjects();
 		cleanInputs();

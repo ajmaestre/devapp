@@ -56,3 +56,11 @@ Si todo está bien, verás los contenedores `dev-app` en ejecución.
 
 
 ---
+
+## 📝 6. Verificación en el Navegador
+
+```sh
+http://localhost:3000
+```
+
+---

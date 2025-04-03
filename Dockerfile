@@ -8,5 +8,5 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY . /usr/share/nginx/html
 
 # Expone el puerto 80 para servir el sitio
-EXPOSE 3000
+EXPOSE 80
 
